@@ -1,0 +1,102 @@
+body {
+    font-family: Montserrat, system-ui;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: center;
+    height: 100vh;
+    background-color: black;
+    color: white;
+    width: clamp(250px, 75vw, 500px);
+    margin: auto;
+}
+
+#wordmark {
+    width: 100%;
+}
+
+#slogan {
+    font-weight: 400;
+    font-size: clamp(10px, 3vw, 20px);
+    text-align: right;
+    transform: translateX(5px);
+    margin: 0 0 40px 0;
+}
+
+#message {
+    display: none;
+    font-size: clamp(14px, 2vw, 18px);
+    font-weight: 600;
+    margin-inline: auto;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+}
+
+form input {
+    outline: none;
+    border: none;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid gray;
+    font-family: inherit;
+    font-size: clamp(14px, 2vw, 18px);
+    background-color: transparent;
+    color: inherit;
+}
+
+form input:focus {
+    border-bottom-color: white;
+    transition: border-bottom-color 300ms;
+}
+
+form button {
+    padding: 12px;
+    outline: none;
+    border: none;
+    background-color: #0040ff;
+    color: inherit;
+    font-family: inherit;
+    font-weight: 600;
+    border-radius: 8px;
+    font-size: clamp(14px, 2vw, 18px);
+    cursor: pointer;
+}
+
+form span {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+    height: fit-content;
+}
+
+a {
+    text-decoration: none;
+    color: #0040ff;
+    font-weight: 600;
+}
+
+#privacy-policies {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: gray;
+    font-size: clamp(12px, 2vw, 16px);
+    margin-bottom: 20px;
+    width: fit-content;
+}
+
+#privacy-policies input {
+    height: clamp(12px, 2vw, 16px);
+    width: clamp(12px, 2vw, 16px);
+    cursor: pointer;
+}
+
+#privacy-policies:hover {
+    cursor: pointer;
+}

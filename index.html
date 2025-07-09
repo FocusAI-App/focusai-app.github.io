@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>FocusAI - Organiza. Crea hábitos. Transforma tu vida. ⚡</title>
+        <link rel="icon" href="./images/favicon.svg" type="image/svg+xml">
+        <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+        <img id="wordmark" src="./images/wordmark.svg" alt="FocusAI logo"/>
+        <h1 id="slogan">Organiza. Crea hábitos. Transforma tu vida.</h1>
+        <p id="message"></p>
+        <form id="focusai-form">
+            <input name="name" autocomplete="name" type="text" placeholder="Nombre" required>
+            <input name="email" autocomplete="email" type="email" placeholder="Email" required>
+            <label id="privacy-policies">
+                <input name="privacy-policies" type="checkbox" required>
+                Acepto la <a href="privacy-policies.html" target="_blank">política de privacidad</a>
+            </label>
+            
+            <button type="submit">Apúntate a la beta gratuita</button>
+        </form>
+
+        <script>
+        document.getElementById('focusai-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const form = e.target;
+        const message = document.getElementById('message');
+
+        const data = {
+            name: form.name.value,
+            email: form.email.value
+        };
+
+        message.style.display = 'block';
+        message.style.color = 'white';
+        message.innerText = "Cargando...";
+        form.style.display = 'none';
+
+        try {
+            const response = await fetch('https://script.google.com/macros/s/AKfycbyMXisVqOowTOmgr1cTG7EcgwPYDl3KQnges4L_M3NzpxTIc-xmn4M_3GQTV8Mxjapq/exec', {
+            method: 'POST',
+            body: JSON.stringify(data)
+            });
+            const result = await response.json();
+            if(result.result === 'success'){
+                message.style.color = 'white';
+                message.innerText = '¡Gracias por apuntarte! :)';
+                message.style.display = 'block';
+                form.reset();
+            } else {
+                message.style.color = 'red';
+                message.innerText = 'Error al enviar. Inténtalo de nuevo.';
+                message.style.display = 'block';
+                form.style.display = 'block';
+            }
+        } catch (error) {
+            message.style.color = 'red';
+            message.innerText = 'Error de red. Inténtalo más tarde.';
+            message.style.display = 'block';
+            form.style.display = 'block';
+        }
+        });
+        </script>
+    </body>
+</html>
